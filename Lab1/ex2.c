@@ -49,6 +49,9 @@ int main(void){
 		write(fd[WRITE_END], write_msg, strlen(write_msg)+1); 
 
 		close(fd[WRITE_END]);
+
+		wait(NULL); //Espera a child terminar o processo
+
 		close(fd2[WRITE_END]);
 
 		read(fd2[READ_END], read_msg, BUFFER_SIZE);
