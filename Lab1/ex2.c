@@ -50,7 +50,7 @@ int main(void){
 
 		close(fd[WRITE_END]);
 
-		wait(NULL); //Espera a child terminar o processo
+		wait(NULL); 
 
 		close(fd2[WRITE_END]);
 
@@ -72,6 +72,7 @@ int main(void){
 
 		close(fd2[READ_END]);
 		close(fd2[WRITE_END]);
+		exit(0);
 	}
 
 	return 0;
