@@ -22,7 +22,7 @@ void inverteCaixa(char* str){
 }
 
 int main(void){
-	char write_msg[BUFFER_SIZE] = "Greetings";
+	char write_msg[BUFFER_SIZE];
 	char read_msg[BUFFER_SIZE];
 	pid_t pid;
 	int fd[2], fd2[2];
@@ -36,6 +36,9 @@ int main(void){
 		fprintf(stderr, "Second Pipe failed");
 	}
 
+	printf("Escreva uma string somente com letras");
+	scanf("%s", write_msg);
+
 	pid = fork();
 
 	if (pid < 0){
@@ -44,6 +47,7 @@ int main(void){
 	}
 
 	if (pid > 0){
+		sleep(5);
 		close(fd[READ_END]);
 
 		write(fd[WRITE_END], write_msg, strlen(write_msg)+1); 
@@ -69,6 +73,8 @@ int main(void){
 		inverteCaixa(read_msg);
 		
 		write(fd2[WRITE_END], read_msg, strlen(read_msg)+1); 
+
+		sleep(5);
 
 		close(fd2[READ_END]);
 		close(fd2[WRITE_END]);
